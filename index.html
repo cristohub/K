@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎉 Feliz Cumpleaños 🎂</title>
+    <title>🎉Cumple K</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2"></script>
     <style>
@@ -17,86 +17,24 @@
             text-align: center;
             background: linear-gradient(45deg, #e4eff8, #ffddc1);
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
             font-family: 'Arial', sans-serif;
             transition: background 1s ease-in-out;
+            cursor: pointer;
         }
 
         #animacion {
             width: 100%;
             max-width: 800px;
-            cursor: pointer;
-        }
-
-        .globo {
-            position: absolute;
-            left: 50%;
-            bottom: 120px;
-            transform: translateX(-50%);
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            width: 90%;
-            max-width: 250px;
-            font-size: 18px;
-            opacity: 0;
-            transition: opacity 0.5s, transform 0.5s;
-            word-wrap: break-word;
-        }
-
-        .globo.mostrar {
-            opacity: 1;
-            transform: translateX(-50%) translateY(-10px);
-        }
-
-        #reiniciar {
-            position: absolute;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%) scale(0.8);
-            padding: 10px 20px;
-            font-size: 18px;
-            border: none;
-            border-radius: 5px;
-            background: #ff6b6b;
-            color: white;
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-        }
-
-        #reiniciar.mostrar {
-            opacity: 1;
-            transform: translateX(-50%) scale(1);
-        }
-
-        #reiniciar:hover {
-            background: #ff4757;
-        }
-
-        @media (max-width: 500px) {
-            .globo {
-                font-size: 16px;
-                padding: 10px;
-                max-width: 200px;
-            }
-
-            #animacion {
-                width: 90%;
-            }
         }
     </style>
 </head>
 <body>
 
-    <div id="globo" class="globo"></div>
     <div id="animacion"></div>
-    <button id="reiniciar">🎈 Volver a Celebrar 🎈</button>
 
     <script>
         var animacion = lottie.loadAnimation({
@@ -104,31 +42,14 @@
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: 'assets/pin.json' // Ruta del JSON
+            path: 'assets/pin.json' 
         });
 
-        var mensaje = "🎂 ¡Feliz cumpleaños! Que tengas un día increíble. 💖";
-        var indice = 0;
-        var globo = document.getElementById("globo");
-        var reiniciarBtn = document.getElementById("reiniciar");
-
-        document.getElementById("animacion").addEventListener("click", function() {
-            globo.classList.add("mostrar");
-            escribirTexto();
+        document.body.addEventListener("click", function() {
             lanzarConfeti();
             cambiarFondo();
             reproducirSonido();
         });
-
-        function escribirTexto() {
-            if (indice < mensaje.length) {
-                globo.innerHTML += mensaje.charAt(indice);
-                indice++;
-                setTimeout(escribirTexto, 55);
-            } else {
-                reiniciarBtn.classList.add("mostrar"); // Aparece suavemente
-            }
-        }
 
         function lanzarConfeti() {
             confetti({
@@ -148,22 +69,9 @@
         }
 
         function reproducirSonido() {
-            var audio = new Audio('assets/feliz.mp3'); // Agrega un archivo de sonido en tu carpeta assets
+            var audio = new Audio('assets/cute-character-wee.mp3'); 
             audio.play();
         }
-
-        reiniciarBtn.addEventListener("click", function() {
-            globo.innerHTML = "";
-            globo.classList.remove("mostrar");
-            reiniciarBtn.classList.remove("mostrar"); // Oculta suavemente
-            indice = 0;
-            setTimeout(() => {
-                escribirTexto();
-                lanzarConfeti();
-                cambiarFondo();
-                reproducirSonido();
-            }, 500);
-        });
     </script>
 
 </body>
