@@ -111,6 +111,15 @@
             background-color: #f1777b;
         }
 
+        .mensaje-aleatorio {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
         @keyframes destello {
             0% {
                 box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
@@ -189,6 +198,7 @@
             detenerMusicaFondo();
             reproducirSonidoCumple();
             reproducirSonidowi() 
+            mostrarMensajeAleatorio();
             
             setTimeout(function() {
                 document.getElementById("confetiBtn").classList.remove("activado");
@@ -253,12 +263,12 @@
         "una persona maravillosa, única, y llena de luz...",  
         "esa persona eres tú.✨",  
         "No hay palabras suficientes para describir lo valiosa que eres.",  
-        "A veces la vida tiene días difíciles, pero quiero que recuerdes algo",  
+        "A veces la vida tiene días difíciles, pero quiero que recuerdes algo:",  
         "Eres fuerte, eres especial, y mereces todo lo bonito que la vida tenga para dar.",  
         "No dejes que nadie te haga dudar de lo increíble que eres.",  
         "Hoy, más que nunca, quiero que sientas todo el amor que te rodea.",  
-        "Porque hoy es tu día. 🎂",  
-        "Feliz cumpleaños, Karlita.🐧✨"
+        "Porque hoy es tu día. ",  
+        "Feliz cumpleaños, Karlita <4 🎂"
     ];
             let pasoHistoria = 0;
         let escribiendo = false;
@@ -290,23 +300,76 @@
         }
 
         function contarHistoria() {
-    if (pasoHistoria < historia.length) {
-        escribirTexto(historia[pasoHistoria], 90, () => { // Aumenta la velocidad de escritura
-            pasoHistoria++;
-            setTimeout(contarHistoria, 50); // Reduce el tiempo de espera entre mensajes
-        });
-    } else {
-        escribirTexto("¡Que viva la cumpleañera! ", 90);
-        pasoHistoria = 0;
-        document.getElementById("confetiBtn").style.display = "flex";
-        activarEfecto();
+        if (pasoHistoria < historia.length) {
+            escribirTexto(historia[pasoHistoria], 90, () => { // Aumenta la velocidad de escritura
+                pasoHistoria++;
+                setTimeout(contarHistoria, 50); // Reduce el tiempo de espera entre mensajes
+            });
+        } else {
+           
+            pasoHistoria = 0;
+            document.getElementById("confetiBtn").style.display = "flex";
+            activarEfecto();
+        }
     }
+
+
+
+
+
+
+
+
+
+
+
+    const mensajes = [
+    "¡Que tu día sea mágico! ✨",
+    "¡A celebrar con todo! 🎊",
+    "¡Sonríe y disfruta! 😃",
+    "¡Hoy brillas aún más! 🌟",
+    "¡Mucho amor para ti! ❤️",
+    "¡Eres especial! 💖",
+    "¡Día de alegría total! 🎈",
+    "¡Mil abrazos para ti! 🤗",
+    "¡Que los sueños se cumplan! 🌠",
+    "¡Karlita, eres luz! 🔥",
+    "¡Sigue iluminando vidas! 💫",
+    "¡Día perfecto para ti! 🎂",
+    "¡Celebra a lo grande! 🥳",
+    "¡Brilla sin límites! 🌞",
+    "¡Tu felicidad es lo más! 🥰",
+    "¡Hoy es pura magia! 🎩✨",
+    "¡Que nunca falte la risa! 😆",
+    "¡Rodeada de buenas vibras! 🌈",
+    "¡Día inolvidable para ti! 🎁",
+    "¡Gracias por ser tan increíble! 💕"
+];
+
+let mensajesDisponibles = [...mensajes];
+
+function obtenerMensajeAleatorio() {
+    if (mensajesDisponibles.length === 0) {
+        mensajesDisponibles = [...mensajes]; // Resetear cuando se acaben
+    }
+
+    const indice = Math.floor(Math.random() * mensajesDisponibles.length);
+    return mensajesDisponibles.splice(indice, 1)[0]; // Extraer sin repetir
 }
 
+function mostrarMensajeAleatorio() {
+    const mensajeDiv = document.createElement("div");
+    mensajeDiv.classList.add("mensaje-aleatorio");
+    mensajeDiv.innerText = obtenerMensajeAleatorio();
 
+    const x = Math.random() * (window.innerWidth - 200);
+    const y = Math.random() * (window.innerHeight - 100);
+    mensajeDiv.style.left = `${x}px`;
+    mensajeDiv.style.top = `${y}px`;
 
-
-
+    document.body.appendChild(mensajeDiv);
+    setTimeout(() => mensajeDiv.remove(), 3000);
+}
 
 
 
