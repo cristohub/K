@@ -1,4 +1,5 @@
-* {
+ /* Estilos generales */
+ * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -6,88 +7,118 @@
 
 body {
   text-align: center;
-  background: linear-gradient(45deg, #e4eff8, #ffddc1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  font-family: 'Arial', sans-serif;
-  transition: background 1s ease-in-out;
-  cursor: pointer;
-}
-
-.principal {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 15px;
-
-}
-
-.foto {
-  width: 100%;
-}
-
-.k {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
- 
-}
-
-.text {
- 
-  width: 100%;
-  max-width: 600px; /* Limita el ancho para evitar que el texto se expanda demasiado */
-  height: auto; /* Permite que la altura se ajuste según el contenido */
+  background: linear-gradient(45deg, #ffffff, #ffffff);
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  text-align: center; /* Asegura que el texto esté centrado */
-  padding: 20px; /* Añade espacio alrededor */
-}
-
-.f {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.5em; /* Reduce un poco el tamaño para que encaje mejor */
-  font-weight: 700;
-  color: #e1e428c7;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-  margin: 10px 0;
-}
-
-.nombre {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.2em; /* También reduce el tamaño */
-  font-weight: 400;
-  color: #833cf7;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-  margin: 10px 0;
-}
-
-.regalos {
-
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 50px;
-
-  display: flex;
-  justify-content: end;
-}
-
-.regalos img {
-
-  width: 300px;
-
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+  position: relative;
 }
 
 #animacion {
   width: 100%;
   max-width: 800px;
-  height: 100vh;
-  margin-top: 20px;
+  height: 400px;
+  margin: 20px auto;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  visibility: hidden;
+  position: relative;
+}
+
+#animacion.mostrar {
+  opacity: 1;
+  visibility: visible;
+}
+
+#mensaje {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px 30px; /* Más espacio interno */
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  display: none;
+  white-space: normal;
+  word-wrap: break-word;
+  max-width: 80%; 
+  min-width: auto; 
+  text-align: center; 
+}
+
+#confetiBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: white;
+  border: none;
+  padding: 20px;
+  font-size: 20px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  opacity: 1;
+}
+
+#confetiBtn img {
+  width: 30px;
+  height: auto;
+}
+
+#confetiBtn:hover {
+  transform: scale(1.1);
+}
+
+#startBtn {
+  padding: 20px 40px;
+  font-size: 24px;
+  background-color: #FF9A9E;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: destello 2s ease-in-out infinite;
+}
+
+#startBtn:hover {
+  background-color: #f1777b;
+}
+
+.mensaje-aleatorio {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+@keyframes destello {
+  0% {
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+  }
+  50% {
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+  }
+  100% {
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+  }
 }
